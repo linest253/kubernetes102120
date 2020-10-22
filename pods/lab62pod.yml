@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: print-greeting
+spec:
+  containers: 
+    - image: bash
+      name: env-print-demo
+      env: 
+      - name: GREETING
+        value: "Hello"
+      - name: HONORIFIC
+        value: "Mister"
+      - name: NAME
+        value: "Kubernetes"
+      command: ["echo"]
+      args: [ "$(GREETING) $(HONORIFIC) $(NAME)" ]
+  restartPolicy: Never
