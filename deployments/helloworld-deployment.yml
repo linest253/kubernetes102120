@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-deployment
+  labels:
+    app: helloworld
+    type: front-end
+spec:
+  template:
+    metadata:
+      name: helloworld-pod
+      labels:
+        app: helloworld
+        type: front-end
+    spec:
+      containers:
+      - name: hello-world
+        image: gcr.io/google-samples/node-hello:1.0
+
+  replicas: 2
+  selector:
+    matchLabels:
+      type: front-end
